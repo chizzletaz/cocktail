@@ -1,0 +1,80 @@
+:root {
+    --color-light: #f1f1f1;
+    --color-dark: #141414;
+    --color-accent: #8c3a16;
+    --color-copper: #b87333;
+}
+
+.card {
+    margin: 0 auto;
+    background-color: transparent;
+    color: var(--color-light);
+    border-bottom: 2px solid var(--color-copper);
+}
+
+.card-body {
+    padding: 2rem 2rem 0;
+    font-size: 1.1rem;
+}
+
+.info {
+    padding: 1rem;
+}
+
+.info i {
+    margin-right: .5rem;
+}
+
+.info span {
+    margin-left: 1rem;
+}
+
+.card-title {
+    font-size: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card-text {
+    padding: 1rem;
+}
+
+.card .row:first-child {
+    border-bottom: 2px solid var(--color-copper);
+    padding: 2rem;
+}
+
+#ingredient ul{
+    position: relative;
+    border-right: 2px solid var(--color-light);
+}
+
+
+#ingredient,
+#step {
+    padding: 2rem;
+}
+
+#ingredient h4,
+#step h4 {
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+#ingredient li {
+    padding: 0.5rem;
+    list-style-type: none;
+}
+
+#ingredient li input {
+    margin-right: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+    #ingredient {
+        border-bottom: 2px solid var(--color-copper);
+    }
+
+    .card-body {
+        padding-left: 0;
+    }
+}
