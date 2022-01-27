@@ -56,7 +56,7 @@ function createSingleCocktailCard(name, img, cat, alc, glass, ingredients, steps
                 </div>
                 <div class="col-md-7" id="step">
                     <h4>Steps</h4>
-                    <p class="card-text">${steps}</p>
+                    <ol>${steps}</ol>
                 </div>
             </div>
         </div>`
@@ -69,7 +69,6 @@ function displaySingleCocktail(cocktail) {
     var drink = drinks[0];
     var name = drink.strDrink;
     var img = drink.strDrinkThumb;
-    var steps = drink.strInstructions;
     var cat = drink.strCategory;
     var alcoholic = drink.stringAlcoholic;
     var alc = alcoholic === 'Alcoholic' ? 'Yes' : 'No';
@@ -90,6 +89,14 @@ function displaySingleCocktail(cocktail) {
             ingredients += `<li><input type="checkbox" /> ${measure} of ${ingredient}</li>`;
         }
     }
+
+    var instruction = drink.strInstructions;
+    var instructions = instruction.split(". ");
+
+    var steps = ``;
+    instructions.forEach((step) => {
+        steps += `<li>${step}.</li>`
+    })
 
     var cocktailCard = createSingleCocktailCard(name, img, cat, alc, glass, ingredients, steps);
 
