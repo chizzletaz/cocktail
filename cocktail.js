@@ -75,6 +75,7 @@ function displaySingleCocktail(cocktail) {
     var glass = drink.Glass;
     var ingredients = "";
 
+    // create measure and ingredient loop
     for (let j = 1; j < 16; j++) {
         // Stop loop when the ingredients are null or empty
         if (drink[`strIngredient${j}`] === null || drink[`strIngredient${j}`] === '') {
@@ -90,8 +91,13 @@ function displaySingleCocktail(cocktail) {
         }
     }
 
+    // create instructions
     var instruction = drink.strInstructions;
     var instructions = instruction.split(". ");
+    // remove the period from the last element of instruction
+    var oldinstr = instructions[instructions.length - 1];
+    var newinstr = oldinstr.substring(0, oldinstr.length - 1);
+    instructions[instructions.length - 1] = newinstr;
 
     var steps = ``;
     instructions.forEach((step) => {
