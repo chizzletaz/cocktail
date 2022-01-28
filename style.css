@@ -18,6 +18,10 @@ h1 {
     padding: 1rem 1rem 0;
 }
 
+h2 {
+    padding: 1rem;
+}
+
 body {
     background-image: url(./media/dark_wood.png);
     color: var(--color-light);
@@ -44,6 +48,10 @@ body {
 .nav-link:hover {
     color: var(--color-light) !important;
     border-bottom: 2px solid var(--color-copper);
+}
+
+#searchby a {
+    color: var(--color-light) !important;
 }
 
 .card {
@@ -77,6 +85,11 @@ body {
 
 .header {
     margin: 2rem 1rem;
+    text-align: center;
+}
+
+.about {
+    text-align: center;
 }
 
 /* index.html */
@@ -141,4 +154,20 @@ footer {
     color: var(--color-light);
     background-color: var(--color-copper);
     font-size: 1em;
+}
+
+/* name.html */
+#namesearch {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#noresults {
+    text-align: center;
+    color: red;
+    padding: 2rem 0;
+}
+
+#search {
+    border-radius: 0;
 }

@@ -26,11 +26,11 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/">Random</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/letter.html">Letter</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/categories.html">Categories</a>
+                        <a class="nav-link active" href="/categories.html">Categories</a>
                     </li>
                 </ul>
                 <!-- <form class="d-flex">
@@ -41,14 +41,22 @@
         </div>
     </nav>
     <div class="container-fluid">
+
         <div class="header">
-            <h2>Search by letter</h2>
-            <div id="letters"></div>
+            <h2>Search by name</h2>
+            <div id="namesearch">
+                <form class="d-flex" id="searchBar">
+                    <input class="form-control me-3" id="search" type="text" placeholder="Search by name" name="search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
         </div>
+        <div id="noresults"></div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5 mb-3" id="cocktailList"></div>
 
         <div class="about">
-            <h2>Want to know more about the ingredients?</h2>
+            <h3>Want to know more about the ingredients?</h3>
         </div>
 
         <footer>
@@ -67,6 +75,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-<script src="letter.js"></script>
+<script src="name.js"></script>
 
 </html>
