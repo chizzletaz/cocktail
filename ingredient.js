@@ -1,65 +1,27 @@
-const categories = document.getElementById('categories');
-const catmobile = document.getElementById('categories-mobile');
 const cocktailList = document.getElementById('cocktailList');
+const searchBar = document.getElementById('search');
+const form = document.getElementById('searchBar');
+const noresult = document.getElementById('noresults');
 
-function getCategories() {
-    url = `https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    cocktailName = searchBar.value;
+    setUrl(cocktailName);
+})
 
-    fetch(url)
-        .then(
-            function (response) {
-                if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: ' +
-                        response.status);
-                    return;
-                }
-
-                // Examine the text in the response
-                response.json().then(function (data) {
-                    setCategories(data);
-                });
-            }
-        )
-        .catch(function (err) {
-            console.log('Fetch Error :-S', err);
-        });
-}
-
-getCategories();
-
-function setCategories(category) {
-    var cat = category.drinks;
-    var category = '';
-    var c;
-    for (let i = 0; i < cat.length; i++) {
-        c = cat[i].strCategory;
-        category += '<button class="category" onclick="setUrl(\'' + c + '\');">' + c + '</button>';
-    }
-
-    var categorymobile = `<label for="categories">Choose a category:</label><select name="categories" id="categories">`;
-    var d;
-
-
-    for (let j = 0; j < cat.length; j++) {
-        d = cat[j].strCategory;
-        categorymobile += `<option onchange="setUrl(${d}); " value="${j} ">${d}</option>`
-    }
-    categorymobile += `</select>`;
-    catmobile.innerHTML = categorymobile;
-    categories.innerHTML = category;
-}
 
 function setUrl(x) {
-    chosenUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${x}`;
-    getCocktails(chosenUrl);
+    chosenUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${x}`;
+    getCocktailByName(chosenUrl);
 }
 
-function createCocktailCard(name, img, id) {
+function createCocktailCard(name, img, cat, id) {
     var cocktailCard = `
             <div class='card h-100'>
                 <img src=${img} id="cocktailImg" class="card-img-top img-fluid" alt="${name}">
                 <div class="card-body">
                     <h5 class="card-title" id="cocktailName">${name}</h5>
+                    <small>Category: ${cat}</small>
                 </div>
                 <div class="text-center mb-4">
                     <a data-drinkId="${id}" class="btn btnCocktail">Make Cocktail</a>
@@ -70,7 +32,7 @@ function createCocktailCard(name, img, id) {
     return cocktailCard;
 }
 
-function getCocktails(chosenUrl) {
+function getCocktailByName(chosenUrl) {
     fetch(chosenUrl)
         .then(
             function (response) {
@@ -82,7 +44,12 @@ function getCocktails(chosenUrl) {
 
                 // Examine the text in the response
                 response.json().then(function (data) {
-                    displayCocktails(data);
+                    if (data.drinks == null) {
+                        noresult.innerHTML = `<h4>Sorry there are no cocktails with that name</h4>`;
+                    } else {
+                        displayCocktails(data);
+                    }
+                    // console.log(data)
                 });
             }
         )
@@ -100,12 +67,14 @@ function displayCocktails(cocktail) {
         var drink = drinks[i];
         var name = drink.strDrink;
         var img = drink.strDrinkThumb;
+        var cat = drink.strCategory;
         var id = drink.idDrink;
-        var cocktailCard = createCocktailCard(name, img, id);
+        var cocktailCard = createCocktailCard(name, img, cat, id);
 
         cocktailCards.push(cocktailCard);
 
     }
+
     // loop over each cocktail and append it to 'cocktailList'
     cocktailCards.map(cocktailCard => {
         var z = document.createElement('div');
@@ -113,8 +82,8 @@ function displayCocktails(cocktail) {
         z.innerHTML = cocktailCard;
         cocktailList.appendChild(z);
     })
-}
 
+}
 
 $(document).on("click", ".btnCocktail", function (e) {
     id = e.target.getAttribute("data-drinkId");
