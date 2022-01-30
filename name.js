@@ -5,6 +5,7 @@ const noresult = document.getElementById('noresults');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    noresult.innerHTML = '';
     cocktailName = searchBar.value;
     setUrl(cocktailName);
 })

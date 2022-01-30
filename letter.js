@@ -1,5 +1,6 @@
 const letters = document.getElementById('letters');
 const cocktailList = document.getElementById('cocktailList');
+const cocktailnumbers = document.getElementById('cocktailnumbers');
 
 
 // create letters for search by letter
@@ -68,7 +69,7 @@ function displayCocktails(cocktail) {
     var drinks = cocktail.drinks;
     var cocktailCards = [];
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < drinks.length; i++) {
         var drink = drinks[i];
         var name = drink.strDrink;
         var img = drink.strDrinkThumb;
@@ -93,3 +94,38 @@ $(document).on("click", ".btnCocktail", function (e) {
     localStorage.setItem('drinkId', id);
     location.href = "cocktail.html";
 })
+
+// find out the number of cocktails per letter
+function numberOfCocktails() {
+    const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "V", "W", "Y", "Z"];
+    var numberofcocktails = [];
+
+    alphabet.forEach(letter => {
+        chosenUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`;
+
+        fetch(chosenUrl)
+            .then(
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' +
+                            response.status);
+                        return;
+                    }
+
+                    // Examine the text in the response
+                    response.json().then(function (data) {
+                        // displayNumberOfCocktails(data);
+                        numbers = data.drinks.length;
+                        numberofcocktails.push(numbers);
+
+                    });
+                }
+            )
+            .catch(function (err) {
+                console.log('Fetch Error :-S', err);
+            });
+    })
+    console.log(numberofcocktails);
+}
+
+numberOfCocktails();

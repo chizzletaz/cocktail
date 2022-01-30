@@ -40,7 +40,7 @@ function createSingleCocktailCard(name, img, cat, alc, glass, ingredients, steps
                     <div class="card-body">           
                         <div class="info">
                             <p><i class="fas fa-tag"></i> Category: <span>${cat}</span></p>
-                            <p><i class="fas fa-wine-bottle"></i> Alcholic: <span>${alc}</span></p>
+                            <p><i class="fas fa-wine-bottle"></i> Alcoholic: <span>${alc}</span></p>
                             <p><i class="fas fa-glass-martini-alt"></i> Glass: <span>${glass}</span></p>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ function displayRandomCocktail(cocktail) {
     var img = drink.strDrinkThumb;
     var cat = drink.strCategory;
     var alcoholic = drink.stringAlcoholic;
-    var alc = alcoholic === 'Alcoholic' ? 'Yes' : 'No';
+    var alc = alcoholic === 'Alcoholic' ? 'No' : 'Yes';
     var glass = drink.Glass;
     var ingredients = "";
 

@@ -9,6 +9,44 @@ form.addEventListener('submit', (e) => {
     setUrl(cocktailName);
 })
 
+// function getIngredients() {
+//     url = `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
+
+//     fetch(url)
+//         .then(
+//             function (response) {
+//                 if (response.status !== 200) {
+//                     console.log('Looks like there was a problem. Status Code: ' +
+//                         response.status);
+//                     return;
+//                 }
+
+//                 // Examine the text in the response
+//                 response.json().then(function (data) {
+//                     setIngredients(data);
+//                 });
+//             }
+//         )
+//         .catch(function (err) {
+//             console.log('Fetch Error :-S', err);
+//         });
+// }
+
+// getIngredients();
+
+// function setIngredients(ingredient) {
+//     var ingr = ingredient.drinks;
+
+//     var ingredient = `<label for="ingredient">Choose an ingredient:</label><select name="ingredient" id="ingredients">`;
+//     var d;
+
+//     for (let j = 0; j < ingr.length; j++) {
+//         d = ingr[j].strIngredient1;
+//         ingredient += `<option onchange="setUrl(${d}); " value="${j} ">${d}</option>`
+//     }
+//     ingredient += `</select>`;
+//     ingredients.innerHTML = ingredient;
+// }
 
 function setUrl(x) {
     chosenUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${x}`;
@@ -45,11 +83,10 @@ function getCocktailByName(chosenUrl) {
                 // Examine the text in the response
                 response.json().then(function (data) {
                     if (data.drinks == null) {
-                        noresult.innerHTML = `<h4>Sorry there are no cocktails with that name</h4>`;
+                        noresult.innerHTML = `<h4>Sorry there are no cocktails with that ingredient</h4>`;
                     } else {
                         displayCocktails(data);
                     }
-                    // console.log(data)
                 });
             }
         )
