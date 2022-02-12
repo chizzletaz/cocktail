@@ -33,6 +33,10 @@ body {
     font-family: 'Bree Serif', serif;
 }
 
+.container-fluid {
+    min-height: calc(100vh - 250px);
+}
+
 .navbar-brand i {
     color: var(--color-copper);
     font-size: 2rem;
@@ -65,7 +69,9 @@ body {
 .card {
     border-radius: 0;
     border: none;
-    color: var(--color-dark)
+    color: var(--color-dark);
+    box-shadow: rgba(255, 255, 255, 0.16) 0px 10px 36px 0px, 
+    rgba(255, 255, 255, 0.06) 0px 0px 0px 1px;
 }
 
 .card-title {

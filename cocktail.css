@@ -5,6 +5,10 @@
     --color-copper: #b87333;
 }
 
+.img-fluid {
+    padding: 30px;
+}
+
 .card {
     margin: 0 auto;
     background-color: transparent;
