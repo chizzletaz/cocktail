@@ -1,9 +1,10 @@
+/*jshint esversion: 6 */
 const categories = document.getElementById('categories');
 const catmobile = document.getElementById('categories-mobile');
 const cocktailList = document.getElementById('cocktailList');
 
 function getCategories() {
-    url = `https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`
+    url = `https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`;
 
     fetch(url)
         .then(
@@ -29,11 +30,11 @@ getCategories();
 
 function setCategories(category) {
     var cat = category.drinks;
-    var category = '';
+    var categorygroup = '';
     var c;
     for (let i = 0; i < cat.length; i++) {
         c = cat[i].strCategory;
-        category += '<button class="category" onclick="setUrl(\'' + c + '\');">' + c + '</button>';
+        categorygroup += '<button class="category" onclick="setUrl(\'' + c + '\');">' + c + '</button>';
     }
 
     var categorymobile = `<label for="categories">Choose a category:</label><select name="categories" id="categories">`;
@@ -42,11 +43,11 @@ function setCategories(category) {
 
     for (let j = 0; j < cat.length; j++) {
         d = cat[j].strCategory;
-        categorymobile += `<option onchange="setUrl(${d}); " value="${j} ">${d}</option>`
+        categorymobile += `<option onchange="setUrl(${d}); " value="${j} ">${d}</option>`;
     }
     categorymobile += `</select>`;
     catmobile.innerHTML = categorymobile;
-    categories.innerHTML = category;
+    categories.innerHTML = categorygroup;
 }
 
 function setUrl(x) {
@@ -65,7 +66,7 @@ function createCocktailCard(name, img, id) {
                     <a data-drinkId="${id}" class="btn btnCocktail">Make Cocktail</a>
                 </div>
             </div>
-        `
+        `;
 
     return cocktailCard;
 }
@@ -112,7 +113,7 @@ function displayCocktails(cocktail) {
         z.classList.add('col');
         z.innerHTML = cocktailCard;
         cocktailList.appendChild(z);
-    })
+    });
 }
 
 
@@ -120,4 +121,4 @@ $(document).on("click", ".btnCocktail", function (e) {
     id = e.target.getAttribute("data-drinkId");
     localStorage.setItem('drinkId', id);
     location.href = "cocktail.html";
-})
+});

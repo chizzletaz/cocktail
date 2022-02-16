@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const letters = document.getElementById('letters');
 const cocktailList = document.getElementById('cocktailList');
 const cocktailnumbers = document.getElementById('cocktailnumbers');
@@ -10,7 +11,7 @@ function setLetters() {
     for (var i = 65; 90 >= i; i++) {
         // don't show buttons for u and x
         if (i == 85 || i == 88) {
-            continue
+            continue;
         } else {
             l = String.fromCharCode(i);
             alphabet += '<button class="letter" onclick="setUrl(\'' + l + '\');">' + l + '</button>';
@@ -38,7 +39,7 @@ function createCocktailCard(name, img, cat, id) {
                     <a data-drinkId="${id}" class="btn btnCocktail">Make Cocktail</a>
                 </div>
             </div>
-        `
+        `;
 
     return cocktailCard;
 }
@@ -86,14 +87,14 @@ function displayCocktails(cocktail) {
         z.classList.add('col');
         z.innerHTML = cocktailCard;
         cocktailList.appendChild(z);
-    })
+    });
 }
 
 $(document).on("click", ".btnCocktail", function (e) {
     id = e.target.getAttribute("data-drinkId");
     localStorage.setItem('drinkId', id);
     location.href = "cocktail.html";
-})
+});
 
 // find out the number of cocktails per letter
 function numberOfCocktails() {
@@ -124,7 +125,7 @@ function numberOfCocktails() {
             .catch(function (err) {
                 console.log('Fetch Error :-S', err);
             });
-    })
+    });
     console.log(numberofcocktails);
 }
 

@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 window.onload = setUrl();
 
 const cocktailList = document.getElementById('cocktailList');
@@ -59,7 +60,7 @@ function createSingleCocktailCard(name, img, cat, alc, glass, ingredients, steps
                     <ol>${steps}</ol>
                 </div>
             </div>
-        </div>`
+        </div>`;
     return cocktailCard;
 }
 
@@ -101,8 +102,8 @@ function displaySingleCocktail(cocktail) {
 
     var steps = ``;
     instructions.forEach((step) => {
-        steps += `<li>${step}.</li>`
-    })
+        steps += `<li>${step}.</li>`;
+    });
 
     var cocktailCard = createSingleCocktailCard(name, img, cat, alc, glass, ingredients, steps);
 

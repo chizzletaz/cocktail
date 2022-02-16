@@ -1,7 +1,8 @@
-const url_random = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'
-const url_name = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
-const url_first = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a'
-const url_id = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007'
+/*jshint esversion: 6 */
+const url_random = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+const url_name = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
+const url_first = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a';
+const url_id = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007';
 
 
 const cocktailList = document.getElementById('cocktailList');
@@ -56,7 +57,7 @@ function createSingleCocktailCard(name, img, cat, alc, glass, ingredients, steps
                     <ol>${steps}</ol>
                 </div>
             </div>
-        </div>`
+        </div>`;
     return cocktailCard;
 }
 
@@ -98,8 +99,8 @@ function displayRandomCocktail(cocktail) {
 
     var steps = ``;
     instructions.forEach((step) => {
-        steps += `<li>${step}.</li>`
-    })
+        steps += `<li>${step}.</li>`;
+    });
 
     var cocktailCard = createSingleCocktailCard(name, img, cat, alc, glass, ingredients, steps);
 

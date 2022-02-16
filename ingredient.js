@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const cocktailList = document.getElementById('cocktailList');
 const searchBar = document.getElementById('search');
 const form = document.getElementById('searchBar');
@@ -7,46 +8,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     cocktailName = searchBar.value;
     setUrl(cocktailName);
-})
-
-// function getIngredients() {
-//     url = `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
-
-//     fetch(url)
-//         .then(
-//             function (response) {
-//                 if (response.status !== 200) {
-//                     console.log('Looks like there was a problem. Status Code: ' +
-//                         response.status);
-//                     return;
-//                 }
-
-//                 // Examine the text in the response
-//                 response.json().then(function (data) {
-//                     setIngredients(data);
-//                 });
-//             }
-//         )
-//         .catch(function (err) {
-//             console.log('Fetch Error :-S', err);
-//         });
-// }
-
-// getIngredients();
-
-// function setIngredients(ingredient) {
-//     var ingr = ingredient.drinks;
-
-//     var ingredient = `<label for="ingredient">Choose an ingredient:</label><select name="ingredient" id="ingredients">`;
-//     var d;
-
-//     for (let j = 0; j < ingr.length; j++) {
-//         d = ingr[j].strIngredient1;
-//         ingredient += `<option onchange="setUrl(${d}); " value="${j} ">${d}</option>`
-//     }
-//     ingredient += `</select>`;
-//     ingredients.innerHTML = ingredient;
-// }
+});
 
 function setUrl(x) {
     chosenUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${x}`;
@@ -65,7 +27,7 @@ function createCocktailCard(name, img, cat, id) {
                     <a data-drinkId="${id}" class="btn btnCocktail">Make Cocktail</a>
                 </div>
             </div>
-        `
+        `;
 
     return cocktailCard;
 }
@@ -118,7 +80,7 @@ function displayCocktails(cocktail) {
         z.classList.add('col');
         z.innerHTML = cocktailCard;
         cocktailList.appendChild(z);
-    })
+    });
 
 }
 
@@ -126,4 +88,4 @@ $(document).on("click", ".btnCocktail", function (e) {
     id = e.target.getAttribute("data-drinkId");
     localStorage.setItem('drinkId', id);
     location.href = "cocktail.html";
-})
+});

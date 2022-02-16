@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const cocktailList = document.getElementById('cocktailList');
 const searchBar = document.getElementById('search');
 const form = document.getElementById('searchBar');
@@ -8,7 +9,7 @@ form.addEventListener('submit', (e) => {
     noresult.innerHTML = '';
     cocktailName = searchBar.value;
     setUrl(cocktailName);
-})
+});
 
 
 function setUrl(x) {
@@ -28,7 +29,7 @@ function createCocktailCard(name, img, cat, id) {
                     <a data-drinkId="${id}" class="btn btnCocktail">Make Cocktail</a>
                 </div>
             </div>
-        `
+        `;
 
     return cocktailCard;
 }
@@ -82,7 +83,7 @@ function displayCocktails(cocktail) {
         z.classList.add('col');
         z.innerHTML = cocktailCard;
         cocktailList.appendChild(z);
-    })
+    });
 
 }
 
@@ -90,4 +91,4 @@ $(document).on("click", ".btnCocktail", function (e) {
     id = e.target.getAttribute("data-drinkId");
     localStorage.setItem('drinkId', id);
     location.href = "cocktail.html";
-})
+});
