@@ -2,6 +2,8 @@
 This cocktail website is a project to practice and enhance my API skills and Javascript skills.
 The idea was to use some of the endpoints given by [TheCocktailDB API](https://www.thecocktaildb.com/api.php)
 
+A link to the live website can be found [here](https://chizzletaz.github.io/cocktail/)
+
 Due to the fact this is a practice project, I've kept the README.md file to a minimum.
 
 # UX
