@@ -29,6 +29,7 @@ function getCategories() {
 getCategories();
 
 function setCategories(category) {
+    // for large screens
     var cat = category.drinks;
     var categorygroup = '';
     var c;
@@ -36,18 +37,24 @@ function setCategories(category) {
         c = cat[i].strCategory;
         categorygroup += '<button class="category" onclick="setUrl(\'' + c + '\');">' + c + '</button>';
     }
+    categories.innerHTML = categorygroup;
 
-    var categorymobile = `<label for="categories">Choose a category:</label><select name="categories" id="categories">`;
+    // for small screens
+    var categorymobile = `<label for="categories">Choose a category:</label>
+                            <select onchange="getChosenCategory(this)" name="categories" id="categories">`;
     var d;
-
-
     for (let j = 0; j < cat.length; j++) {
         d = cat[j].strCategory;
-        categorymobile += `<option onchange="setUrl(${d}); " value="${j} ">${d}</option>`;
+        categorymobile += `<option value="${d} ">${d}</option>`;
     }
     categorymobile += `</select>`;
     catmobile.innerHTML = categorymobile;
-    categories.innerHTML = categorygroup;
+    console.log(catmobile);
+}
+
+function getChosenCategory(drink) {
+    var value = drink.value;
+    setUrl(value);
 }
 
 function setUrl(x) {
